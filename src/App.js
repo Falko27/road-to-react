@@ -24,23 +24,23 @@ const App = () => {
     }
   ]
 
-  const [ searchTerm, setSearchTerm ] = React.useState('')
+  const [ searchTerm, setSearchTerm ] = useState('')
 
   const handleChange = (event) => {
     setSearchTerm(event.target.value)
     console.log(searchTerm)
   } 
 
+  const searchedStories = stories.filter(story => 
+    story.title.toLowerCase().includes(searchTerm.toLowerCase())
+  )
+
   return (
     <div className="container">
       <h1>My Hacker Stories</h1>
-
-      <Search onSearch={handleChange} />
-      
+      <Search onSearch={handleChange} />   
       <hr/>
-
-      <List list={stories} />
-
+      <List list={searchedStories} />
     </div>
   );
 }
