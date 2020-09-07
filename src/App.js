@@ -24,6 +24,7 @@ const App = () => {
   ];
 
   const [data, setData] = useState([]);
+  console.log("Dan", data);
 
   useEffect(() => {
     fetch("https://ghibliapi.herokuapp.com/films")
@@ -32,7 +33,6 @@ const App = () => {
       })
       .then((data) => {
         setData(data);
-        console.log(data);
       })
       .catch((err) => {
         console.log("no data", err);
@@ -52,12 +52,12 @@ const App = () => {
 
   return (
     <div className="container">
-      <h1>My Hacker Stories</h1>
+      <h1>Studio Ghibli</h1>
       <Search onSearch={handleChange} />
       <hr />
       <List list={searchedStories} />
       {data.title.map((item) => (
-        <li>item</li>
+        <li>{item}</li>
       ))}
     </div>
   );
