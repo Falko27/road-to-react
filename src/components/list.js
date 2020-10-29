@@ -1,15 +1,17 @@
-import React from 'react';
+import React from 'react'
 
-const List = (props) => {
+const List = ({list}) => {
 
-    return props.list.map(item => {
-        return ( 
-          <div key={item.objectID}>
-            <div>{item.title}</div>
-            <a href={item.url}>{item.title}</a>
-          </div>
-        )
-      }
-    )}
-  
-  export default List;
+return (
+   list.map(item => {
+            return  (
+              <div>
+                <p key={item.objectID}>{item.title}</p>
+                <p>{item.author}</p>
+              </div>
+            )
+        })
+    )
+}
+
+export default List;

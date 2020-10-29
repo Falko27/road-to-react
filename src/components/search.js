@@ -1,15 +1,14 @@
-import React from 'react';
+import React from 'react'
 
-const Search = (props) => {
-  
+const Search = ({handleChange, search}) => {
+
     return (
-        <div>
-            <label htmlFor="search">Search: </label>
-            <input onChange={props.onSearch} id="search" type="text"/>
+        <>
+        <label htmlFor='search' type='text'>Search</label>
+        <input value={search} id='search' type='text' onChange={handleChange}/>
+        </>
+    )
 
-        </div>
-    );
-  }
-  
-  export default Search;
-  
+}
+
+export default Search;
