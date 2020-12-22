@@ -19,15 +19,22 @@ const list = [{
   objectID: 1,
 }]
 
-const App = () => {
+const useSemiPersistentState = (key, initalState) => {
 
-  const [searchTerm, setSearchTerm] = useState(
-    localStorage.getItem('search') || 'React'
+  const [value, setValue] = useState(
+    localStorage.getItem(key) || initalState
   )
 
   useEffect(() => {
-    localStorage.setItem('search', searchTerm)
-  }, [searchTerm])
+    localStorage.setItem(key, value)
+  }, [value, key])
+
+  return [value, setValue];
+}
+
+const App = () => { 
+
+  const [searchTerm, setSearchTerm] = useSemiPersistentState('search', 'React');
 
   const handleChange = (e) => {
     setSearchTerm(e.target.value)
