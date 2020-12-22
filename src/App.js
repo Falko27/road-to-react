@@ -20,15 +20,12 @@ const list = [{
 }]
 
 const useSemiPersistentState = (key, initalState) => {
-
   const [value, setValue] = useState(
     localStorage.getItem(key) || initalState
   )
-
   useEffect(() => {
     localStorage.setItem(key, value)
   }, [value, key])
-
   return [value, setValue];
 }
 
@@ -49,7 +46,7 @@ const App = () => {
     <div className="container">
       <h1>My Hacker Stories</h1>
       
-      <Search search={searchTerm} handleChange={handleChange} />
+      <Search search={searchTerm} handleChange={handleChange} label="Search" isFocused />
 
       <hr/>
 

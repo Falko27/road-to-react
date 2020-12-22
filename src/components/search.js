@@ -1,11 +1,11 @@
 import React from 'react'
 
-const Search = ({handleChange, search}) => {
+const Search = ({handleChange, search, label, isFocused}) => {
 
     return (
         <>
-        <label htmlFor='search' type='text'>Search</label>
-        <input value={search} id='search' type='text' onChange={handleChange}/>
+        <label htmlFor='search' type='text'>{label}</label>
+        <input autoFocus={isFocused} value={search} id='search' type='text' onChange={handleChange}/>
         </>
     )
 
