@@ -42,6 +42,8 @@ const App = () => {
     return story.title.toLocaleLowerCase().includes(searchTerm.toLowerCase())
   })
 
+  const [count, setCount] = useState(0)
+
   return (
     <div className="container">
       <h1>My Hacker Stories</h1>
@@ -53,6 +55,9 @@ const App = () => {
       <p>Searching for: {searchTerm}</p>
 
       <List list={searchedStories} />
+
+      <p>{count} page likes</p>
+      <button onClick={() => setCount(count + 1)}>Like this page</button>
       
     </div>
   );
