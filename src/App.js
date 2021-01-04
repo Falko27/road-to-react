@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, {useEffect, useState, useRef} from 'react';
 import './App.css';
 import List from './components/list'
 import Search from './components/search'
@@ -31,6 +31,17 @@ const useSemiPersistentState = (key, initalState) => {
 
 const App = () => { 
 
+  // show banner when url contains 'app'
+  const [banner, setBanner] = useState(false)
+  const url = useRef(window.location.href)
+
+  useEffect(() => {
+    if (url.current.indexOf('app') > 0) {
+    setBanner(true)
+  }
+  }, [url])
+
+
   const [searchTerm, setSearchTerm] = useSemiPersistentState('search', 'React');
 
   const handleChange = (e) => {
@@ -46,6 +57,9 @@ const App = () => {
 
   return (
     <div className="container">
+      {banner && 
+      <div> This is my banner</div>
+      }
       <h1>My Hacker Stories</h1>
       
       <Search search={searchTerm} handleChange={handleChange} label="Search" isFocused />
